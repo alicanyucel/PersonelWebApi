@@ -1,5 +1,6 @@
 
 using PersonelWebApi.Context;
+using PersonelWebApi.Repositories;
 
 namespace PersonelWebApi
 {
@@ -13,6 +14,7 @@ namespace PersonelWebApi
 
             builder.Services.AddControllers();
             builder.Services.AddTransient<ApplicationDbContext>();
+            builder.Services.AddTransient<IPersonelRepository, PersonelRepository>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

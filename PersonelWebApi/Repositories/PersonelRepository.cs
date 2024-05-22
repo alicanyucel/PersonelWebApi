@@ -18,8 +18,3 @@ namespace PersonelWebApi.Repositories
         }
     }
 }
-public interface IPersonelRepository
-{
-    List<Personel> GetAll();
-    bool Create(Personel personel);
-}
