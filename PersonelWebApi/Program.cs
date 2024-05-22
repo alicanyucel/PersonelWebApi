@@ -1,4 +1,6 @@
 
+using PersonelWebApi.Context;
+
 namespace PersonelWebApi
 {
     public class Program
@@ -10,6 +12,7 @@ namespace PersonelWebApi
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddTransient<ApplicationDbContext>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
