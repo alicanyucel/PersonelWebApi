@@ -1,20 +1,26 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PersonelWebApi.Dros;
+using PersonelWebApi.Services;
 
 namespace PersonelWebApi.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class PersonelsController : ControllerBase
+    public class PersonelsController(IPersonelService personelService) : ControllerBase
     {
+        [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok();
+            var personels = personelService.GetAll();
+            return Ok(personels);
         }
         [HttpPost]
-        public IActionResult Create()
+        public IActionResult Create(CreatePersonelDto request)
         {
-            return Create();
+            var result = personelService.Create(request);
+            if (!result) return BadRequest(new { Message = "Something went wrong" });
+            return Ok(new { Message = "Personel create is successful" });
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿namespace PersonelWebApi.Dros
 {
-    public sealed record CreatePersonelDto(string FirstName,string Lastname,DateOnly StartTime);
-    
+    public sealed record CreatePersonelDto(
+      string FirstName,
+      string LastName,
+      DateOnly StartingDate);
 }

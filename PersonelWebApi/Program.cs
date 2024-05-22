@@ -20,7 +20,18 @@ namespace PersonelWebApi
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-
+            app.Use(async (context, next) =>
+            {
+                try
+                {
+                    await next(context);
+                }
+                catch (Exception ex)
+                {
+                    context.Response.StatusCode = 500;
+                    await context.Response.WriteAsync(ex.Message);
+                }
+            });
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
